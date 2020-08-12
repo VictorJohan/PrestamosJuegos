@@ -10,7 +10,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="DAL\" />
 		<Folder Include="BLL\" />
 		<Folder Include="DATA\" />
 		<Folder Include="UI\Consultas\" />
