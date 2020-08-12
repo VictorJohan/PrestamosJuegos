@@ -10,6 +10,19 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\agregar.png" />
+	  <None Remove="Resources\console.png" />
+	  <None Remove="Resources\delete.png" />
+	  <None Remove="Resources\gamepad.png" />
+	  <None Remove="Resources\persona.png" />
+	  <None Remove="Resources\remover.png" />
+	  <None Remove="Resources\save.png" />
+	  <None Remove="Resources\search.png" />
+	  <None Remove="Resources\xbox.png" />
+	  <None Remove="Resources\xboxLogo.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<Folder Include="DATA\" />
 		<Folder Include="UI\Consultas\" />
 	</ItemGroup>
@@ -20,6 +33,34 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="Resources\agregar.png" />
+	  <Resource Include="Resources\console.png" />
+	  <Resource Include="Resources\delete.png" />
+	  <Resource Include="Resources\gamepad.png" />
+	  <Resource Include="Resources\persona.png" />
+	  <Resource Include="Resources\remover.png" />
+	  <Resource Include="Resources\save.png" />
+	  <Resource Include="Resources\search.png" />
+	  <Resource Include="Resources\xbox.png" />
+	  <Resource Include="Resources\xboxLogo.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Properties\Resources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Resources.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Properties\Resources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 </Project>
