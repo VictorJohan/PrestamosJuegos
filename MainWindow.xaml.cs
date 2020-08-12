@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PrestamosJuegos.UI.Registros.rAmigo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,12 @@ namespace PrestamosJuegos
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            rAmigo rAmigo = new rAmigo();
+            rAmigo.Show();
         }
     }
 }

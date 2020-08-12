@@ -5,8 +5,74 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrestamosJuegos.UI.Registros.rAmigo"
         mc:Ignorable="d"
-        Title="rAmigo" Height="450" Width="800">
+        Title="Registrar Amigo" Height="430" Width="360" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="\Resources\amigos.png">
     <Grid>
-        
+        <StackPanel Orientation="Vertical" Margin="10,10,10,10">
+            <!--Amigo Id-->
+            <Label Content="Amigo Id" FontSize="11"/>
+            
+            <!--Amigo Id TextBox y Boton Buscar-->
+            <StackPanel Orientation="Horizontal">
+                <!--TextBox-->
+                <TextBox Name="AmigoIdTextBox" Height="20" Width="230" Text="{Binding AmigoId}" HorizontalAlignment="Left" Margin="5,0"/>
+                
+                <!--Button-->
+                <Button Name="BuscarButton" Width="60" Height="20" Margin="5,0" Click="BuscarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/search.png" />
+                        <Label Content="Buscar" Margin="4,0" FontSize="11" Padding="-1"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <!--Nombres-->
+            <Label Content="Nombres" FontSize="11"/>
+            <TextBox Name="NombresTextBox" Height="20" Text="{Binding Nombres}" Width="300" HorizontalAlignment="Left" Margin="5,0"/>
+
+            <!--Direccion-->
+            <Label Content="Dirección" FontSize="11"/>
+            <TextBox Name="DireccionTextBox" Height="20" Text="{Binding Direccion}" Width="300" HorizontalAlignment="Left" Margin="5,0"/>
+
+            <!--Telefono-->
+            <Label Content="Teléfono" FontSize="11"/>
+            <TextBox Name="TelefonoTextBox" Height="20" Text="{Binding Telefono}" Width="300" HorizontalAlignment="Left" Margin="5,0"/>
+
+            <!--Celular-->
+            <Label Content="Celular" FontSize="11"/>
+            <TextBox Name="CelularTextBox" Height="20" Text="{Binding Celular}" Width="300" HorizontalAlignment="Left" Margin="5,0"/>
+
+            <!--Email-->
+            <Label Content="Email" FontSize="11"/>
+            <TextBox Name="EmailTextBox" Height="20" Text="{Binding Email}" Width="300" HorizontalAlignment="Left" Margin="5,0"/>
+
+            <!--Fecha de Nacimiento-->
+            <Label Content="Fecha Nacimiento" FontSize="11"/>
+            <DatePicker Name="FechaNacimientoDatePicker" Height="20" SelectedDate="{Binding FechaNacimiento}" Padding="-1" Width="300" HorizontalAlignment="Left" Margin="5,0"/>
+
+            <!--Barra de botones-->
+            <StackPanel Orientation="Horizontal" Width="210" Margin="0,20,0,0">
+                <Button Name="NuevoButton" Width="60" Height="20" Click="NuevoButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/persona.png" />
+                        <Label Content="Nuevo" FontSize="11" Padding="-1" Margin="4,0"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Name="GuardarButton" Width="67" Height="20" Margin="5,0,0,0" Click="GuardarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/save.png" />
+                        <Label Content="Guardar" FontSize="11" Padding="-1" Margin="4,0"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Name="EliminarButton" Width="67" Height="20" Margin="5,0,0,0" Click="EliminarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/delete.png" />
+                        <Label Content="Eliminar" FontSize="11" Padding="-1" Margin="4,0"/>
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+            
+        </StackPanel>
     </Grid>
 </Window>
