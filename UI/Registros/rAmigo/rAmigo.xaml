@@ -33,7 +33,7 @@
             <TextBox Name="DireccionTextBox" Height="20" Text="{Binding Direccion}" Width="300" HorizontalAlignment="Left" Margin="5,0"/>
 
             <!--Telefono-->
-            <Label Content="Teléfono" FontSize="11"/>
+            <Label Content="Teléfono(Opcional)" FontSize="11"/>
             <TextBox Name="TelefonoTextBox" Height="20" Text="{Binding Telefono}" Width="300" HorizontalAlignment="Left" Margin="5,0"/>
 
             <!--Celular-->
