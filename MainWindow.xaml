@@ -11,6 +11,7 @@
             <MenuItem Header="Registros">
                 <MenuItem Header="Registrar Amigo" Click="MenuItem_Click"/>
                 <MenuItem Header="Entrada Juego" Click="MenuItem_Click_1"/>
+                <MenuItem Header="Registro Juego" Click="MenuItem_Click_2"/>
             </MenuItem>
         </Menu>
     </Grid>

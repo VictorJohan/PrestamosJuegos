@@ -179,5 +179,30 @@ namespace PrestamosJuegos.BLL
 
             return lista;
         }
+
+        public static Juegos ExisteJuego(string descripcion)
+        {
+            Contexto contexto = new Contexto();
+            List<Juegos> lista = new List<Juegos>();
+            Juegos juego;
+
+            try
+            {
+                lista = contexto.Juegos.ToList();
+                juego = lista.Find(j => j.Descripcion == descripcion);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return juego;
+        }
     }
 }

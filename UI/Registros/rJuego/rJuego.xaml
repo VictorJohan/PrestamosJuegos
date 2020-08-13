@@ -5,8 +5,67 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrestamosJuegos.UI.Registros.rJuego"
         mc:Ignorable="d"
-        Title="rJuego" Height="450" Width="800">
+        Title="Registro Juego" Height="330" Width="360" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="\Resources\juego.png">
     <Grid>
-        
+        <StackPanel Orientation="Vertical" Margin="10,10,10,10">
+            <!--Juego Id-->
+            <Label Content="Juego Id" FontSize="11"/>
+
+            <!--Amigo Id TextBox y Boton Buscar-->
+            <StackPanel Orientation="Horizontal">
+                <!--TextBox-->
+                <TextBox Name="JuegoIdTextBox" Height="20" Width="230" Text="{Binding JuegoId}" HorizontalAlignment="Left" Margin="5,0"/>
+
+                <!--Button-->
+                <Button Name="BuscarButton" Width="60" Height="20" Margin="5,0" Click="BuscarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/search.png" />
+                        <Label Content="Buscar" Margin="4,0" FontSize="11" Padding="-1"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+            <!--Fecha de Compra-->
+            <Label Content="Fecha Compra" FontSize="11"/>
+            <DatePicker Name="FechaCompraDatePicker" Height="20" SelectedDate="{Binding FechaCompra}" Padding="-1" Width="300" HorizontalAlignment="Left" Margin="5,0"/>
+
+            <!--Descripcion-->
+            <Label Content="Descripción" FontSize="11"/>
+            <TextBox Name="DescripcionTextBox" Height="20" Text="{Binding Descripcion}" Width="300" HorizontalAlignment="Left" Margin="5,0"/>
+
+            <!--Precio-->
+            <Label Content="Precio" FontSize="11"/>
+            <TextBox Name="PrecioTextBox" Height="20" Text="{Binding Precio}" Width="300" HorizontalAlignment="Left" Margin="5,0"/>
+
+            <!--Existencia-->
+            <Label Content="Existencia" FontSize="11"/>
+            <TextBox Name="ExistenciaTextBox" Height="20" Text="{Binding Existencia}" Width="300" IsReadOnly="True" HorizontalAlignment="Left" Margin="5,0"/>
+
+            <!--Barra de botones-->
+            <StackPanel Orientation="Horizontal" Width="210" Margin="0,20,0,0">
+                <Button Name="NuevoButton" Width="60" Height="20" Click="NuevoButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/gamepad2.png" />
+                        <Label Content="Nuevo" FontSize="11" Padding="-1" Margin="4,0"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Name="GuardarButton" Width="67" Height="20" Margin="5,0,0,0" Click="GuardarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/save.png" />
+                        <Label Content="Guardar" FontSize="11" Padding="-1" Margin="4,0"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Name="EliminarButton" Width="67" Height="20" Margin="5,0,0,0" Click="EliminarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/delete.png" />
+                        <Label Content="Eliminar" FontSize="11" Padding="-1" Margin="4,0"/>
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+
+        </StackPanel>
     </Grid>
 </Window>

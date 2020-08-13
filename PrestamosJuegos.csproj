@@ -16,6 +16,8 @@
 	  <None Remove="Resources\console.png" />
 	  <None Remove="Resources\delete.png" />
 	  <None Remove="Resources\gamepad.png" />
+	  <None Remove="Resources\gamepad2.png" />
+	  <None Remove="Resources\juego.png" />
 	  <None Remove="Resources\persona.png" />
 	  <None Remove="Resources\remover.png" />
 	  <None Remove="Resources\save.png" />
@@ -44,6 +46,8 @@
 	  <Resource Include="Resources\console.png" />
 	  <Resource Include="Resources\delete.png" />
 	  <Resource Include="Resources\gamepad.png" />
+	  <Resource Include="Resources\gamepad2.png" />
+	  <Resource Include="Resources\juego.png" />
 	  <Resource Include="Resources\persona.png" />
 	  <Resource Include="Resources\remover.png" />
 	  <Resource Include="Resources\save.png" />

@@ -104,6 +104,14 @@ namespace PrestamosJuegos.UI.Registros.rEntrada
                 return false;
             }
 
+            //válida que no hayan campos vacíos.
+            if (JuegoIdTextBox.Text.Length == 0 || CantidadTextBox.Text.Length == 0)
+            {
+                MessageBox.Show("Asegúrese de haber llenado todos los campos.", "Campos vacíos",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
+
             if (!Regex.IsMatch(JuegoIdTextBox.Text, "^[1-9]+$"))
             {
                 MessageBox.Show("Asegúrese de haber ingresado un Id de caracter numerico y que sea mayor a 0.",
