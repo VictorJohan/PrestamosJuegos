@@ -55,6 +55,9 @@ namespace PrestamosJuegos.UI.Registros.rEntrada
 
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!Validar())
+                return;
+
             if (EntradasBLL.Guardar(Entrada))
             {
                 Limpiar();
@@ -90,6 +93,32 @@ namespace PrestamosJuegos.UI.Registros.rEntrada
         {
             Entrada = new Entradas();
             this.DataContext = Entrada;
+        }
+
+        public bool Validar()
+        {
+            if (!Regex.IsMatch(EntradaIdTextBox.Text, "^[1-9]+$"))
+            {
+                MessageBox.Show("Asegúrese de haber ingresado un Id de caracter numerico y que sea mayor a 0.",
+                    "Id no valido", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            if (!Regex.IsMatch(JuegoIdTextBox.Text, "^[1-9]+$"))
+            {
+                MessageBox.Show("Asegúrese de haber ingresado un Id de caracter numerico y que sea mayor a 0.",
+                    "Id no valido", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            if (!JuegosBLL.Existe(int.Parse(EntradaIdTextBox.Text)))
+            {
+                MessageBox.Show("Este juego no se encontro en la base de datos. Recuerde crear el juego antes de darle una entrada.",
+                    "No existe.", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            return true;
         }
     }
 }
