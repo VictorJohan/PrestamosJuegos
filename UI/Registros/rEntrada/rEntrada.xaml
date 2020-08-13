@@ -5,8 +5,62 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrestamosJuegos.UI.Registros.rEntrada"
         mc:Ignorable="d"
-        Title="rEntrada" Height="450" Width="800">
+        Title="Entrada Juego" Height="280" Width="320" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="\Resources\console.png">
     <Grid>
-        
+        <StackPanel Orientation="Vertical" Margin="10,10,10,10">
+            <!--Entrada Id-->
+            <Label Content="Entrada Id" FontSize="11"/>
+            <!--Entra Id TextBox y Boton Buscar-->
+            <StackPanel Orientation="Horizontal">
+                <!--TextBox-->
+                <TextBox Name="EntradaIdTextBox" Height="20" Width="200" Text="{Binding EntradaId}" HorizontalAlignment="Left" Margin="5,0"/>
+
+                <!--Button-->
+                <Button Name="BuscarButton" Width="60" Height="20" Margin="5,0" Click="BuscarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/search.png" />
+                        <Label Content="Buscar" Margin="4,0" FontSize="11" Padding="-1"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+            <!--Fecha-->
+            <Label Content="Fecha" FontSize="11"/>
+            <DatePicker Name="FechaDatePicker" Height="20" SelectedDate="{Binding Fecha}" Padding="-1" Width="270" HorizontalAlignment="Left" Margin="5,0"/>
+
+            <!--Juego Id-->
+            <Label Content="Juego Id" FontSize="11"/>
+            <TextBox Name="JuegoIdTextBox" Height="20" Width="270" Text="{Binding JuegoId}" HorizontalAlignment="Left" Margin="5,0"/>
+
+            <!--Cantidad-->
+            <Label Content="Cantidad" FontSize="11"/>
+            <TextBox Name="CantidadTextBox" Height="20" Width="270" Text="{Binding Cantidad}" HorizontalAlignment="Left" Margin="5,0"/>
+
+            <!--Barra de botones-->
+            <StackPanel Orientation="Horizontal" Width="210" HorizontalAlignment="Center" Margin="0,15,0,0">
+                <Button Name="NuevoButton" Width="60" Height="20" Click="NuevoButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/botones.png" />
+                        <Label Content="Nuevo" FontSize="11" Padding="-1" Margin="4,0"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Name="GuardarButton" Width="67" Height="20" Margin="5,0,0,0" Click="GuardarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/save.png" />
+                        <Label Content="Guardar" FontSize="11" Padding="-1" Margin="4,0"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Name="EliminarButton" Width="67" Height="20" Margin="5,0,0,0" Click="EliminarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/delete.png" />
+                        <Label Content="Eliminar" FontSize="11" Padding="-1" Margin="4,0"/>
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+            
+        </StackPanel>
     </Grid>
 </Window>

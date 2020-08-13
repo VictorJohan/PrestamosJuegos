@@ -1,6 +1,9 @@
-﻿using System;
+﻿using PrestamosJuegos.BLL;
+using PrestamosJuegos.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -17,9 +20,76 @@ namespace PrestamosJuegos.UI.Registros.rEntrada
     /// </summary>
     public partial class rEntrada : Window
     {
+        private Entradas Entrada = new Entradas();
         public rEntrada()
         {
             InitializeComponent();
+            this.DataContext = Entrada;
+        }
+
+        private void BuscarButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!Regex.IsMatch(EntradaIdTextBox.Text, "^[1-9]+$"))
+            {
+                MessageBox.Show("Asegúrese de haber ingresado un Id de caracter numerico y que sea mayor a 0.",
+                    "Id no valido", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            var encontrado = EntradasBLL.Buscar(int.Parse(EntradaIdTextBox.Text));
+            if (encontrado != null)
+            {
+                Entrada = encontrado;
+                this.DataContext = Entrada;
+            }
+            else
+            {
+                MessageBox.Show("Esa entrada no existe en la base de datos.", "No se encontro.", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void NuevoButton_Click(object sender, RoutedEventArgs e)
+        {
+            Limpiar();
+        }
+
+        private void GuardarButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (EntradasBLL.Guardar(Entrada))
+            {
+                Limpiar();
+                MessageBox.Show("Guardado.", "Exito.", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("Algo salio mal.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void EliminarButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!Regex.IsMatch(EntradaIdTextBox.Text, "^[1-9]+$"))
+            {
+                MessageBox.Show("Asegúrese de haber ingresado un Id de caracter numerico y que sea mayor a 0.",
+                    "Id no valido", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (EntradasBLL.Eliminar(int.Parse(EntradaIdTextBox.Text)))
+            {
+                Limpiar();
+                MessageBox.Show("Eliminado.", "Exito.", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("Algo salio mal.", "Error.", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        public void Limpiar()
+        {
+            Entrada = new Entradas();
+            this.DataContext = Entrada;
         }
     }
 }

@@ -32,7 +32,7 @@ namespace PrestamosJuegos.UI.Registros.rAmigo
         {
             if (!Regex.IsMatch(AmigoIdTextBox.Text, "^[1-9]+$"))
             {
-                MessageBox.Show("Asegúrese de haber ingresado un Id de caracter numerico y que sea mayor a 0",
+                MessageBox.Show("Asegúrese de haber ingresado un Id de caracter numerico y que sea mayor a 0.",
                     "Id no valido", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
@@ -74,7 +74,7 @@ namespace PrestamosJuegos.UI.Registros.rAmigo
         {
             if (!Regex.IsMatch(AmigoIdTextBox.Text, "^[1-9]+$"))
             {
-                MessageBox.Show("Asegúrese de haber ingresado un Id de caracter numerico y que sea mayor a 0",
+                MessageBox.Show("Asegúrese de haber ingresado un Id de caracter numerico y que sea mayor a 0.",
                     "Id no valido", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
@@ -101,7 +101,7 @@ namespace PrestamosJuegos.UI.Registros.rAmigo
             //Valida el Id del amigo
             if(!Regex.IsMatch(AmigoIdTextBox.Text, "^[1-9]+$"))
             {
-                MessageBox.Show("Asegúrese de haber ingresado un Id de caracter numerico y que sea mayor a 0", 
+                MessageBox.Show("Asegúrese de haber ingresado un Id de caracter numerico y que sea mayor a 0.", 
                     "Id no valido", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }

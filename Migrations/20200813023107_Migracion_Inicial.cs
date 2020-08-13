@@ -29,7 +29,7 @@ namespace PrestamosJuegos.Migrations
                 name: "Entradas",
                 columns: table => new
                 {
-                    EntrdaId = table.Column<int>(nullable: false)
+                    EntradaId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Fecha = table.Column<DateTime>(nullable: false),
                     JuegoId = table.Column<int>(nullable: false),
@@ -37,7 +37,7 @@ namespace PrestamosJuegos.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Entradas", x => x.EntrdaId);
+                    table.PrimaryKey("PK_Entradas", x => x.EntradaId);
                 });
 
             migrationBuilder.CreateTable(

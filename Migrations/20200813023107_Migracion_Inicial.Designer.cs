@@ -9,7 +9,7 @@ using PrestamosJuegos.DAL;
 namespace PrestamosJuegos.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200812021328_Migracion_Inicial")]
+    [Migration("20200813023107_Migracion_Inicial")]
     partial class Migracion_Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,7 +49,7 @@ namespace PrestamosJuegos.Migrations
 
             modelBuilder.Entity("PrestamosJuegos.Entidades.Entradas", b =>
                 {
-                    b.Property<int>("EntrdaId")
+                    b.Property<int>("EntradaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -62,7 +62,7 @@ namespace PrestamosJuegos.Migrations
                     b.Property<int>("JuegoId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("EntrdaId");
+                    b.HasKey("EntradaId");
 
                     b.ToTable("Entradas");
                 });

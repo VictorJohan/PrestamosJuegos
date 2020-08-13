@@ -59,5 +59,15 @@ namespace PrestamosJuegos.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] botones {
+            get {
+                object obj = ResourceManager.GetObject("botones", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

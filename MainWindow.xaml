@@ -10,6 +10,7 @@
         <Menu Height="20" VerticalAlignment="Top">
             <MenuItem Header="Registros">
                 <MenuItem Header="Registrar Amigo" Click="MenuItem_Click"/>
+                <MenuItem Header="Entrada Juego" Click="MenuItem_Click_1"/>
             </MenuItem>
         </Menu>
     </Grid>

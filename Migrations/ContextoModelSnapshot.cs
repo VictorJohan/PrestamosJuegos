@@ -47,7 +47,7 @@ namespace PrestamosJuegos.Migrations
 
             modelBuilder.Entity("PrestamosJuegos.Entidades.Entradas", b =>
                 {
-                    b.Property<int>("EntrdaId")
+                    b.Property<int>("EntradaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -60,7 +60,7 @@ namespace PrestamosJuegos.Migrations
                     b.Property<int>("JuegoId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("EntrdaId");
+                    b.HasKey("EntradaId");
 
                     b.ToTable("Entradas");
                 });

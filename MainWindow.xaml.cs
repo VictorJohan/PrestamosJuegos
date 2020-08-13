@@ -1,4 +1,5 @@
 ﻿using PrestamosJuegos.UI.Registros.rAmigo;
+using PrestamosJuegos.UI.Registros.rEntrada;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,12 @@ namespace PrestamosJuegos
         {
             rAmigo rAmigo = new rAmigo();
             rAmigo.Show();
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            rEntrada rEntrada = new rEntrada();
+            rEntrada.Show();
         }
     }
 }

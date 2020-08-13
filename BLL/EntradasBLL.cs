@@ -13,7 +13,7 @@ namespace PrestamosJuegos.BLL
     {
         public static bool Guardar(Entradas entrada)
         {
-            if (!Existe(entrada.EntrdaId))
+            if (!Existe(entrada.EntradaId))
                 return Insertar(entrada);
             else
                 return Modificar(entrada);
@@ -26,7 +26,7 @@ namespace PrestamosJuegos.BLL
 
             try
             {
-                ok = contexto.Entradas.Any(e => e.EntrdaId  == id);
+                ok = contexto.Entradas.Any(e => e.EntradaId  == id);
             }
             catch (Exception)
             {

@@ -12,6 +12,7 @@
 	<ItemGroup>
 	  <None Remove="Resources\agregar.png" />
 	  <None Remove="Resources\amigos.png" />
+	  <None Remove="Resources\botones.png" />
 	  <None Remove="Resources\console.png" />
 	  <None Remove="Resources\delete.png" />
 	  <None Remove="Resources\gamepad.png" />
@@ -39,6 +40,7 @@
 	<ItemGroup>
 	  <Resource Include="Resources\agregar.png" />
 	  <Resource Include="Resources\amigos.png" />
+	  <Resource Include="Resources\botones.png" />
 	  <Resource Include="Resources\console.png" />
 	  <Resource Include="Resources\delete.png" />
 	  <Resource Include="Resources\gamepad.png" />
