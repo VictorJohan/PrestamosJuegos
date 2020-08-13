@@ -14,9 +14,15 @@ namespace PrestamosJuegos.BLL
         public static bool Guardar(Entradas entrada)
         {
             if (!Existe(entrada.EntradaId))
+            {
+                IncrementaInventario(entrada);
                 return Insertar(entrada);
+            }
             else
+            {
+                ModificaInventario(entrada);
                 return Modificar(entrada);
+            }
         }
 
         public static bool Existe(int id)
@@ -26,7 +32,7 @@ namespace PrestamosJuegos.BLL
 
             try
             {
-                ok = contexto.Entradas.Any(e => e.EntradaId  == id);
+                ok = contexto.Entradas.Any(e => e.EntradaId == id);
             }
             catch (Exception)
             {
@@ -178,6 +184,24 @@ namespace PrestamosJuegos.BLL
             }
 
             return lista;
+        }
+
+        public static void IncrementaInventario(Entradas entrada)
+        {
+            Juegos juego = JuegosBLL.Buscar(entrada.JuegoId);
+            juego.Existencia += entrada.Cantidad;
+            JuegosBLL.Guardar(juego);
+        }
+
+        public static void ModificaInventario(Entradas NuevaEntrada)
+        {
+            Entradas entrada = Buscar(NuevaEntrada.EntradaId);//Se buscala entrada anterior
+            Juegos juego = JuegosBLL.Buscar(NuevaEntrada.JuegoId);//Se busca el juego a modificar
+
+            juego.Existencia -= entrada.Cantidad;//Se le resta la cantidad de la entrada anterior.
+            juego.Existencia += NuevaEntrada.Cantidad;//Se le suma la nueva cantidad.
+
+            JuegosBLL.Guardar(juego);
         }
     }
 }

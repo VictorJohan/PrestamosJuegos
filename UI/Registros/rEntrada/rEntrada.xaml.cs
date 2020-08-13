@@ -125,7 +125,7 @@ namespace PrestamosJuegos.UI.Registros.rEntrada
                 return false;
             }
 
-            if (!JuegosBLL.Existe(int.Parse(EntradaIdTextBox.Text)))
+            if (!JuegosBLL.Existe(int.Parse(JuegoIdTextBox.Text)))
             {
                 MessageBox.Show("Este juego no se encontro en la base de datos. Recuerde crear el juego antes de darle una entrada.",
                     "No existe.", MessageBoxButton.OK, MessageBoxImage.Error);
