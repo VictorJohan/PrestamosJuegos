@@ -28,6 +28,7 @@ namespace PrestamosJuegos.UI.Registros.rAmigo
             this.DataContext = Amigo;
         }
 
+        //Busca un registro.
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
             if (!Regex.IsMatch(AmigoIdTextBox.Text, "^[1-9]+$"))
@@ -49,11 +50,13 @@ namespace PrestamosJuegos.UI.Registros.rAmigo
             }
         }
 
+        //Limpia los campos del registro para crear uno nuevo.
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
             Limpiar();
         }
 
+        //Guarda un registro en la base de datos.
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             if (!Validar())
@@ -70,6 +73,7 @@ namespace PrestamosJuegos.UI.Registros.rAmigo
             }
         }
 
+        //Elimina un registro de la base de datos.
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
             if (!Regex.IsMatch(AmigoIdTextBox.Text, "^[1-9]+$"))
@@ -90,12 +94,14 @@ namespace PrestamosJuegos.UI.Registros.rAmigo
             }
         }
 
+        //Limpia los campos del registro.
         public void Limpiar()
         {
             Amigo = new Amigos();
             this.DataContext = Amigo;
         }
 
+        //Valida los campos del registro.
         public bool Validar()
         {
             //Valida el Id del amigo

@@ -27,6 +27,7 @@ namespace PrestamosJuegos.UI.Registros.rEntrada
             this.DataContext = Entrada;
         }
 
+        //Busca un registro.
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
             if (!Regex.IsMatch(EntradaIdTextBox.Text, "^[1-9]+$"))
@@ -48,11 +49,13 @@ namespace PrestamosJuegos.UI.Registros.rEntrada
             }
         }
 
+        //Limpia los campos del registro para crear uno nuevo.
         private void NuevoButton_Click(object sender, RoutedEventArgs e)
         {
             Limpiar();
         }
 
+        //Guarda un registro en la base de datos.
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
             if (!Validar())
@@ -69,6 +72,7 @@ namespace PrestamosJuegos.UI.Registros.rEntrada
             }
         }
 
+        //Elimina un registro de la base de datos.
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
             if (!Regex.IsMatch(EntradaIdTextBox.Text, "^[1-9]+$"))
@@ -89,12 +93,14 @@ namespace PrestamosJuegos.UI.Registros.rEntrada
             }
         }
 
+        //Limpia los campos del registro.
         public void Limpiar()
         {
             Entrada = new Entradas();
             this.DataContext = Entrada;
         }
 
+        //Valida los campos del registro.
         public bool Validar()
         {
             if (!Regex.IsMatch(EntradaIdTextBox.Text, "^[1-9]+$"))
