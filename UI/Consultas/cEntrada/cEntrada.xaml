@@ -35,7 +35,7 @@
 
             </StackPanel>
 
-            <DataGrid Name="ConsultaDataGrid" Width="796" Height="300" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
+            <DataGrid Name="ConsultaDataGrid" Width="796" Height="300" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FF41CF41" HorizontalAlignment="Left"
                               ItemsSource="{Binding Entradas}" Margin="5,5,0,0">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Id" IsReadOnly="True" Binding="{Binding EntradaId}"/>

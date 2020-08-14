@@ -70,7 +70,7 @@
 
                     <!--DataGrid-->
                     <DataGrid Name="DetalleDataGrid" Width="407" Height="100" AutoGenerateColumns="False" 
-                              AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
+                              AlternatingRowBackground="#FF41CF41" HorizontalAlignment="Left"
                               ItemsSource="{Binding PrestamosDetalles}" Margin="5,5,0,0">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" IsReadOnly="True" Binding="{Binding JuegoId}"/>
