@@ -5,8 +5,117 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrestamosJuegos.UI.Registros.rPrestamo"
         mc:Ignorable="d"
-        Title="rPrestamo" Height="450" Width="800">
+        Title="Registrar Prestamo" Height="570" Width="477" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="\Resources\xboxLogo.png">
     <Grid>
-        
+        <StackPanel Orientation="Vertical" Margin="10,10,10,10">
+
+            <Label Content="Prestamo Id" FontSize="11"/>
+            <!--Prestamo Id TextBox y Boton Buscar-->
+            <StackPanel Orientation="Horizontal">
+                <!--TextBox-->
+                <TextBox Name="PrestamoIdTextBox" Height="20" Width="361" Text="{Binding PrestamoId}" HorizontalAlignment="Left" Margin="5,0"/>
+
+                <!--Button-->
+                <Button Name="BuscarButton" Width="60" Height="20" Margin="5,0" Click="BuscarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/search.png" />
+                        <Label Content="Buscar" Margin="4,0" FontSize="11" Padding="-1"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+            <!--Fecha-->
+            <Label Content="Fecha" FontSize="11"/>
+            <DatePicker Name="FechaDatePicker" Height="20" SelectedDate="{Binding Fecha}" Padding="-1"  Margin="5,0"/>
+
+            <!--Amigo-->
+            <Label Content="Amigo" FontSize="11"/>
+            <ComboBox Name="AmigoComboBox" Height="20" SelectedValue="{Binding AmigoId}" Padding="2,0,-1,-1" Margin="5,0" Cursor=""/>
+
+            <!--Observacion-->
+            <Label Content="Observación" FontSize="11"/>
+            <TextBox Name="ObservacionTextBox" Height="50" TextWrapping="Wrap" Text="{Binding Observacion}" Margin="5,0" TextChanged="ObservacionTextBox_TextChanged"/>
+
+            <!--Cantidad de juegos-->
+            <Label Content="Juegos Prestados" FontSize="11"/>
+            <TextBox Name="CantidadJuegosTextBox" Height="20" Text="{Binding CantidadJuegos}" IsReadOnly="True" Margin="5,0"/>
+
+            <!--GroupBox donde esta el DataGrid-->
+            <GroupBox Header="Prestamo Detalle" BorderBrush="Black" Margin="5,8,0,0">
+                <StackPanel Orientation="Vertical">
+                    <!--Barra de Labels-->
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Juego" FontSize="11"/>
+                        <Label Content="Cantidad" FontSize="11" Margin="213,0,0,0"/>
+
+                    </StackPanel>
+
+                    <!--Barra de TextBox-->
+                    <StackPanel Orientation="Horizontal">
+                        <!--ComboBox Articulo-->
+                        <ComboBox Name="JuegoComboBox" Width="242" SelectedValue="{Binding JuegoId}" Padding="2,0,-1,-1" Height="20" Margin="5,0"/>
+
+                        <!--TextBox Precio-->
+                        <TextBox Name="CantidadTextBox" Width="70" Height="20" Margin="5,0"/>
+
+                        <!--Agregar Button-->
+                        <Button Name="AgregarButton"  Width="70" Height="20" Margin="10,0" Click="AgregarButton_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Resources/agregar.png" />
+                                <Label Content="Agregar" FontSize="11" Margin="4,0" Padding="-1"/>
+                            </StackPanel>
+                        </Button>
+
+                    </StackPanel>
+
+                    <!--DataGrid-->
+                    <DataGrid Name="DetalleDataGrid" Width="407" Height="100" AutoGenerateColumns="False" 
+                              AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
+                              ItemsSource="{Binding PrestamosDetalles}" Margin="5,5,0,0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id" IsReadOnly="True" Binding="{Binding JuegoId}"/>
+                            <DataGridTextColumn Header="Descripción" Binding="{Binding Juego.Descripcion}"/>
+                            <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <!--Boton Remover-->
+                    <Button Name="RemoverButton"  Width="70" Height="20" Margin="5,5" HorizontalAlignment="Left" Click="RemoverButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resources/remover.png" />
+                            <Label Content="Remover" FontSize="11" Margin="4,0" Padding="-1"/>
+                        </StackPanel>
+                    </Button>
+
+                </StackPanel>
+            </GroupBox>
+
+            <!--Panel de Botones-->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,16,0,0" Width="212">
+                <!--Nuevo-->
+                <Button Name="NuevoButton"  Width="60" Height="20" Click="NuevoButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/prestamoJ.png" />
+                        <Label Content="Nuevo" FontSize="11" Margin="4,0" Padding="-1"/>
+                    </StackPanel>
+                </Button>
+                <!--Guardar-->
+                <Button Name="GuardarButton" Width="65" Height="20" Margin="5,0,0,0" HorizontalAlignment="Left" Click="GuardarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/save.png" />
+                        <Label Content="Guardar" FontSize="11" Margin="4,0" Padding="-1"/>
+                    </StackPanel>
+                </Button>
+                <!--Eliminar-->
+                <Button Name="EliminarButton"  Width="65" Height="20" Margin="5,0" HorizontalAlignment="Left" Click="EliminarButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/delete.png" />
+                        <Label Content="Eliminar" FontSize="11" Margin="4,0" Padding="-1"/>
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+
+        </StackPanel>
     </Grid>
 </Window>

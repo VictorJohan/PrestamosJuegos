@@ -79,5 +79,15 @@ namespace PrestamosJuegos.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] xbox {
+            get {
+                object obj = ResourceManager.GetObject("xbox", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

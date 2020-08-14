@@ -19,6 +19,7 @@
 	  <None Remove="Resources\gamepad2.png" />
 	  <None Remove="Resources\juego.png" />
 	  <None Remove="Resources\persona.png" />
+	  <None Remove="Resources\prestamoJ.png" />
 	  <None Remove="Resources\remover.png" />
 	  <None Remove="Resources\save.png" />
 	  <None Remove="Resources\search.png" />
@@ -49,6 +50,7 @@
 	  <Resource Include="Resources\gamepad2.png" />
 	  <Resource Include="Resources\juego.png" />
 	  <Resource Include="Resources\persona.png" />
+	  <Resource Include="Resources\prestamoJ.png" />
 	  <Resource Include="Resources\remover.png" />
 	  <Resource Include="Resources\save.png" />
 	  <Resource Include="Resources\search.png" />

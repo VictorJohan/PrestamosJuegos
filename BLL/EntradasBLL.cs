@@ -142,7 +142,7 @@ namespace PrestamosJuegos.BLL
             return ok;
         }
 
-        public static List<Entradas> GetAmigos()
+        public static List<Entradas> GetEntradas()
         {
             Contexto contexto = new Contexto();
             List<Entradas> lista = new List<Entradas>();
@@ -164,7 +164,7 @@ namespace PrestamosJuegos.BLL
             return lista;
         }
 
-        public static List<Entradas> GetAmigos(Expression<Func<Entradas, bool>> criterio)
+        public static List<Entradas> GetEntradas(Expression<Func<Entradas, bool>> criterio)
         {
             Contexto contexto = new Contexto();
             List<Entradas> lista = new List<Entradas>();

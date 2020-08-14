@@ -48,6 +48,11 @@ namespace PrestamosJuegos.BLL
 
             try
             {
+                foreach (var item in prestamo.PrestamosDetalles)
+                {
+                    item.Juego.Existencia -= item.Cantidad;
+                    contexto.Entry(item.Juego).State = EntityState.Modified;
+                }
                 contexto.Prestamos.Add(prestamo);
                 ok = contexto.SaveChanges() > 0;
             }
