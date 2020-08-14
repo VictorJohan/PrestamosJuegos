@@ -33,7 +33,7 @@
             <ComboBox Name="AmigoComboBox" Height="20" SelectedValue="{Binding AmigoId}" Padding="2,0,-1,-1" Margin="5,0" Cursor=""/>
 
             <!--Observacion-->
-            <Label Content="Observación" FontSize="11"/>
+            <Label Content="Observación (Opcional)" FontSize="11"/>
             <TextBox Name="ObservacionTextBox" Height="50" TextWrapping="Wrap" Text="{Binding Observacion}" Margin="5,0" TextChanged="ObservacionTextBox_TextChanged"/>
 
             <!--Cantidad de juegos-->

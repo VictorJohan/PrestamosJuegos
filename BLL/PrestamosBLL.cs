@@ -75,7 +75,7 @@ namespace PrestamosJuegos.BLL
             bool ok = false;
             try
             {
-                contexto.Database.ExecuteSqlRaw($"Delete FROM PrestamoDetalle Where PrestamoId={prestamo.PrestamoId}");
+                contexto.Database.ExecuteSqlRaw($"Delete FROM PrestamosDetalle Where PrestamoId={prestamo.PrestamoId}");
                 foreach (var item in prestamo.PrestamosDetalles)
                 {
                     contexto.Entry(item).State = EntityState.Added;

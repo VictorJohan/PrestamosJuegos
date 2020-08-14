@@ -61,6 +61,9 @@ namespace PrestamosJuegos.UI.Registros.rPrestamo
         //Agrega un juego al DataGrid
         private void AgregarButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!ValidarAgregar())
+                return;
+
             var detalle = new PrestamosDetalle
             {
                 Id = 0,
@@ -82,7 +85,10 @@ namespace PrestamosJuegos.UI.Registros.rPrestamo
         //Elimina una fila del DataGrid
         private void RemoverButton_Click(object sender, RoutedEventArgs e)
         {
-
+            var detalle = (PrestamosDetalle)DetalleDataGrid.SelectedItem;
+            Prestamo.CantidadJuegos -= detalle.Cantidad;
+            Prestamo.PrestamosDetalles.RemoveAt(DetalleDataGrid.SelectedIndex);
+            Cargar();
         }
 
         //Limpia los campos del registro para crear uno nuevo.
@@ -94,6 +100,9 @@ namespace PrestamosJuegos.UI.Registros.rPrestamo
         //Guarda un registro en la base de datos.
         private void GuardarButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!Validar())
+                return;
+
             if (PrestamosBLL.Guardar(Prestamo))
             {
                 Limpiar();
@@ -147,6 +156,59 @@ namespace PrestamosJuegos.UI.Registros.rPrestamo
         {
             Prestamo = new Prestamos();
             this.DataContext = Prestamo;
+        }
+
+        //Valida los campos
+        public bool Validar()
+        {
+            //Valida el Id
+            if (!Regex.IsMatch(PrestamoIdTextBox.Text, "^[1-9]+$"))
+            {
+                MessageBox.Show("Asegúrese de haber ingresado un Id de caracter numerico y que sea mayor a 0.",
+                    "Id no valido", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            //Valida que se seleccione un amigo
+            if(AmigoComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Asegúrese de haber seleccionado un amigo.",
+                   "Campo Amigo", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            return true;
+        }
+        
+        //Valida los campos del detalle
+        public bool ValidarAgregar()
+        {
+            //Valida que se haya seleccionado un juego
+            if (JuegoComboBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Asegúrese de haber seleccionado un juego.",
+                   "Campo Juego", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            //Valida que se introduzaca una cantidad valida.
+            if (!Regex.IsMatch(CantidadTextBox.Text, "^[1-9]+${1,9}"))
+            {
+                MessageBox.Show("Asegúrese de haber ingresado cantidad valida.",
+                    "Cantidad no valido", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            //Valida que la cantidad no sea mayor que la cantidad existente
+            if(JuegosBLL.Existencia(int.Parse(JuegoComboBox.SelectedValue.ToString())) < int.Parse(CantidadTextBox.Text))
+            {
+                MessageBox.Show($"En el inventario solo quedan {JuegosBLL.Existencia(int.Parse(JuegoComboBox.SelectedValue.ToString()))} " +
+                    $"unidades disponibles.",
+                    "Cantidad insuficiente.", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            return true;
         }
     }
 }

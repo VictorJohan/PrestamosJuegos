@@ -204,5 +204,11 @@ namespace PrestamosJuegos.BLL
 
             return juego;
         }
+
+        public static int Existencia(int id)
+        {
+            Juegos juego = Buscar(id);
+            return juego.Existencia;
+        }
     }
 }
