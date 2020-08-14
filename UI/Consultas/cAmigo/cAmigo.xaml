@@ -21,7 +21,7 @@
 
             <!--Panel Controles-->
             <StackPanel Orientation="Horizontal">
-                <ComboBox Name="FiltroComBox" Height="20" Width="200" HorizontalAlignment="Left" Margin="5,0" Padding="-1"/>
+                <ComboBox Name="FiltroComBox" Height="20" Width="200" Padding="2,0,-1,-1" HorizontalAlignment="Left" Margin="5,0"/>
                 <DatePicker Name="DesdeDatePicker" Height="20" Padding="-1" Margin="10,0,0,0"/>
                 <DatePicker Name="HastaDatePicker" Height="20" Padding="-1" Margin="10,0,10,0"/>
                 <TextBox Name="CriterioTexBox"  Width="200" Height="20" Margin="10,0,0,0"/>

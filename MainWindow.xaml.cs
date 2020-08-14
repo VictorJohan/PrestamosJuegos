@@ -1,4 +1,7 @@
 ﻿using PrestamosJuegos.UI.Consultas.cAmigo;
+using PrestamosJuegos.UI.Consultas.cEntrada;
+using PrestamosJuegos.UI.Consultas.cJuego;
+using PrestamosJuegos.UI.Consultas.cPrestamo;
 using PrestamosJuegos.UI.Registros.rAmigo;
 using PrestamosJuegos.UI.Registros.rEntrada;
 using PrestamosJuegos.UI.Registros.rJuego;
@@ -59,6 +62,24 @@ namespace PrestamosJuegos
         {
             cAmigo cAmigo = new cAmigo();
             cAmigo.Show();
+        }
+
+        private void MenuItem_Click_5(object sender, RoutedEventArgs e)
+        {
+            cEntrada cEntrada = new cEntrada();
+            cEntrada.Show();
+        }
+
+        private void MenuItem_Click_6(object sender, RoutedEventArgs e)
+        {
+            cJuego cJuego = new cJuego();
+            cJuego.Show();
+        }
+
+        private void MenuItem_Click_7(object sender, RoutedEventArgs e)
+        {
+            cPrestamo cPrestamo = new cPrestamo();
+            cPrestamo.Show();
         }
     }
 }

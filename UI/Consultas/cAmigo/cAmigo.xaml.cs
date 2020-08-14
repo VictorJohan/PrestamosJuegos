@@ -35,7 +35,7 @@ namespace PrestamosJuegos.UI.Consultas.cAmigo
             {
                 switch (FiltroComBox.SelectedIndex)
                 {
-                    case 0:
+                    case 0://Id
                         if (!Regex.IsMatch(CriterioTexBox.Text, "^[1-9]+$"))
                         {
                             MessageBox.Show("Asegúrese de haber ingresado un Id de caracter numerico y que sea mayor a 0.",
@@ -44,7 +44,8 @@ namespace PrestamosJuegos.UI.Consultas.cAmigo
                         }
                         lista = AmigosBLL.GetAmigos(a => a.AmigoId == int.Parse(CriterioTexBox.Text));
                         break;
-                    case 1:
+
+                    case 1://Nombres
                         if (!Regex.IsMatch(CriterioTexBox.Text, "^[a-zA-Z'.\\s]{1,40}$"))
                         {
                             MessageBox.Show("Solo se admiten carácteres alfabeticos.", "Nombre no válido.",
@@ -53,10 +54,12 @@ namespace PrestamosJuegos.UI.Consultas.cAmigo
                         }
                         lista = AmigosBLL.GetAmigos(a => a.Nombres == CriterioTexBox.Text);
                         break;
-                    case 2:
+
+                    case 2://Direccion
                         lista = AmigosBLL.GetAmigos(a => a.Direccion == CriterioTexBox.Text);
                         break;
-                    case 3:
+
+                    case 3://Telefono
                         if (!Regex.IsMatch(CriterioTexBox.Text, @"\d{3}\-\d{3}\-\d{4}"))
                         {
                             MessageBox.Show("Asegúrese de haber cumplido con el siguiente formato: 111-111-1111.", "Número celular no válido.",
@@ -65,7 +68,8 @@ namespace PrestamosJuegos.UI.Consultas.cAmigo
                         }
                         lista = AmigosBLL.GetAmigos(a => a.Telefono == CriterioTexBox.Text);
                         break;
-                    case 4:
+
+                    case 4://Celular
                         if (!Regex.IsMatch(CriterioTexBox.Text, @"\d{3}\-\d{3}\-\d{4}"))
                         {
                             MessageBox.Show("Asegúrese de haber cumplido con el siguiente formato: 111-111-1111.", "Número celular no válido.",
@@ -74,7 +78,8 @@ namespace PrestamosJuegos.UI.Consultas.cAmigo
                         }
                         lista = AmigosBLL.GetAmigos(a => a.Celular == CriterioTexBox.Text);
                         break;
-                    case 5:
+
+                    case 5://Email
                         if (!Regex.IsMatch(CriterioTexBox.Text, "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*"))
                         {
                             MessageBox.Show("La direccón de correo electrónico que ha introducido no es válida.", "Campo Email.",
