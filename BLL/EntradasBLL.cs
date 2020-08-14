@@ -16,15 +16,14 @@ namespace PrestamosJuegos.BLL
         {
             if (!Existe(entrada.EntradaId))
             {
-                IncrementaInventario(entrada);
+                
                 return Insertar(entrada);
             }
             else
             {
-                if (ModificaInventario(entrada))
-                    return Modificar(entrada);
-                else
-                    return false;
+
+                return Modificar(entrada);
+
             }
         }
 
@@ -57,6 +56,8 @@ namespace PrestamosJuegos.BLL
 
             try
             {
+                entrada.Juego.Existencia += entrada.Cantidad;
+                contexto.Entry(entrada.Juego).State = EntityState.Modified;
                 contexto.Entradas.Add(entrada);
                 ok = contexto.SaveChanges() > 0;
             }
@@ -77,9 +78,13 @@ namespace PrestamosJuegos.BLL
         {
             Contexto contexto = new Contexto();
             bool ok = false;
+            var aux = Buscar(entrada.EntradaId);
 
             try
             {
+                entrada.Juego.Existencia -= aux.Cantidad;
+                entrada.Juego.Existencia += entrada.Cantidad;
+                contexto.Entry(entrada.Juego).State = EntityState.Modified;
                 contexto.Entry(entrada).State = EntityState.Modified;
                 ok = contexto.SaveChanges() > 0;
             }
@@ -189,33 +194,6 @@ namespace PrestamosJuegos.BLL
             return lista;
         }
 
-        public static void IncrementaInventario(Entradas entrada)
-        {
-            Juegos juego = JuegosBLL.Buscar(entrada.JuegoId);
-            juego.Existencia += entrada.Cantidad;
-            JuegosBLL.Guardar(juego);
-        }
-
-        public static bool ModificaInventario(Entradas NuevaEntrada)
-        {
-            Entradas entrada = Buscar(NuevaEntrada.EntradaId);//Se buscala entrada anterior
-            Juegos juego = JuegosBLL.Buscar(NuevaEntrada.JuegoId);//Se busca el juego a modificar
-
-            juego.Existencia -= entrada.Cantidad;//Se le resta la cantidad de la entrada anterior.
-            juego.Existencia += NuevaEntrada.Cantidad;//Se le suma la nueva cantidad.
-
-            //Se puede dar el caso de que se preste una una cantidad X de juegos y se quiera modificar 
-            //la entrada por una cantidad menor a la que se presto y el inventario quede en - 
-            if (juego.Existencia < 0)
-            {
-                MessageBox.Show("No puedes realizar este cambio porque al parecer prestaste una cantidad mayor de la que ahora quieres " +
-                    "ingresar.",
-                    "Ha ocurrido un conflicto.", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-
-            JuegosBLL.Guardar(juego);
-            return true;
-        }
+        
     }
 }

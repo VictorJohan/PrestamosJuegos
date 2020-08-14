@@ -29,6 +29,7 @@ namespace PrestamosJuegos.UI.Registros.rEntrada
             JuegoComboBox.ItemsSource = JuegosBLL.GetJuegos();
             JuegoComboBox.SelectedValuePath = "JuegoId";
             JuegoComboBox.DisplayMemberPath = "Descripcion";
+            
         }
 
         //Busca un registro.
@@ -64,6 +65,8 @@ namespace PrestamosJuegos.UI.Registros.rEntrada
         {
             if (!Validar())
                 return;
+
+            Entrada.Juego = (Juegos)JuegoComboBox.SelectedItem;
 
             if (EntradasBLL.Guardar(Entrada))
             {
@@ -142,6 +145,19 @@ namespace PrestamosJuegos.UI.Registros.rEntrada
                 MessageBox.Show("Asegúrese de haber ingresado cantidad valida.",
                     "Cantidad no valido", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
+            }
+
+            //Valida que el inventario no quede en negativo por una modificacion de una entrada.
+            var juego = JuegosBLL.Buscar(int.Parse(JuegoComboBox.SelectedValue.ToString()));
+            if(juego.Existencia != 0)
+            {
+                if ((juego.Existencia - int.Parse(CantidadTextBox.Text)) < 0)
+                {
+                    MessageBox.Show("No puedes realizar este cambio porque al parecer prestaste una cantidad mayor de la que ahora quieres " +
+                        "ingresar.",
+                        "Ha ocurrido un conflicto.", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false;
+                }
             }
 
             return true;

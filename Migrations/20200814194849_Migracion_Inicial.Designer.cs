@@ -9,7 +9,7 @@ using PrestamosJuegos.DAL;
 namespace PrestamosJuegos.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200813023107_Migracion_Inicial")]
+    [Migration("20200814194849_Migracion_Inicial")]
     partial class Migracion_Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,6 +63,8 @@ namespace PrestamosJuegos.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("EntradaId");
+
+                    b.HasIndex("JuegoId");
 
                     b.ToTable("Entradas");
                 });
@@ -137,6 +139,15 @@ namespace PrestamosJuegos.Migrations
                     b.HasIndex("PrestamoId");
 
                     b.ToTable("PrestamosDetalle");
+                });
+
+            modelBuilder.Entity("PrestamosJuegos.Entidades.Entradas", b =>
+                {
+                    b.HasOne("PrestamosJuegos.Entidades.Juegos", "Juego")
+                        .WithMany()
+                        .HasForeignKey("JuegoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("PrestamosJuegos.Entidades.Prestamos", b =>

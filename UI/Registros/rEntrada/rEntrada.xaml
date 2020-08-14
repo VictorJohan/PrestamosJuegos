@@ -30,7 +30,7 @@
 
             <!--Juego Id-->
             <Label Content="Juego" FontSize="11"/>
-            <ComboBox Name="JuegoComboBox" Height="20" Width="270" SelectedValue="{Binding JuegoId}" HorizontalAlignment="Left" Margin="5,0"/>
+            <ComboBox Name="JuegoComboBox" Height="20" Width="270" SelectedValue = "{Binding JuegoId}" HorizontalAlignment="Left" Margin="5,0"/>
 
             <!--Cantidad-->
             <Label Content="Cantidad" FontSize="11"/>

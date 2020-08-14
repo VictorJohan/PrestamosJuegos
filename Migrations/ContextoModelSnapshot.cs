@@ -62,6 +62,8 @@ namespace PrestamosJuegos.Migrations
 
                     b.HasKey("EntradaId");
 
+                    b.HasIndex("JuegoId");
+
                     b.ToTable("Entradas");
                 });
 
@@ -135,6 +137,15 @@ namespace PrestamosJuegos.Migrations
                     b.HasIndex("PrestamoId");
 
                     b.ToTable("PrestamosDetalle");
+                });
+
+            modelBuilder.Entity("PrestamosJuegos.Entidades.Entradas", b =>
+                {
+                    b.HasOne("PrestamosJuegos.Entidades.Juegos", "Juego")
+                        .WithMany()
+                        .HasForeignKey("JuegoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("PrestamosJuegos.Entidades.Prestamos", b =>
