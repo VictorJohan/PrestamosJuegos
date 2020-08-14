@@ -25,6 +25,10 @@ namespace PrestamosJuegos.UI.Registros.rEntrada
         {
             InitializeComponent();
             this.DataContext = Entrada;
+            //ComboBox Juego
+            JuegoComboBox.ItemsSource = JuegosBLL.GetJuegos();
+            JuegoComboBox.SelectedValuePath = "JuegoId";
+            JuegoComboBox.DisplayMemberPath = "Descripcion";
         }
 
         //Busca un registro.
@@ -111,24 +115,32 @@ namespace PrestamosJuegos.UI.Registros.rEntrada
             }
 
             //válida que no hayan campos vacíos.
-            if (JuegoIdTextBox.Text.Length == 0 || CantidadTextBox.Text.Length == 0)
+            if (JuegoComboBox.SelectedIndex ==-1 || CantidadTextBox.Text.Length == 0)
             {
                 MessageBox.Show("Asegúrese de haber llenado todos los campos.", "Campos vacíos",
                     MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
 
-            if (!Regex.IsMatch(JuegoIdTextBox.Text, "^[1-9]+$"))
-            {
-                MessageBox.Show("Asegúrese de haber ingresado un Id de caracter numerico y que sea mayor a 0.",
-                    "Id no valido", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
+            //if (!Regex.IsMatch(JuegoIdTextBox.Text, "^[1-9]+$"))
+            //{
+            //    MessageBox.Show("Asegúrese de haber ingresado un Id de caracter numerico y que sea mayor a 0.",
+            //        "Id no valido", MessageBoxButton.OK, MessageBoxImage.Error);
+            //    return false;
+            //}
 
-            if (!JuegosBLL.Existe(int.Parse(JuegoIdTextBox.Text)))
+            if (!JuegosBLL.Existe(int.Parse(JuegoComboBox.SelectedValue.ToString())))
             {
                 MessageBox.Show("Este juego no se encontro en la base de datos. Recuerde crear el juego antes de darle una entrada.",
                     "No existe.", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            //Valida que se introduzaca una cantidad valida.
+            if (!Regex.IsMatch(CantidadTextBox.Text, "^[1-9]+${1,9}"))
+            {
+                MessageBox.Show("Asegúrese de haber ingresado cantidad valida.",
+                    "Cantidad no valido", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
 

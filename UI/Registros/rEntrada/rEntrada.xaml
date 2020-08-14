@@ -29,8 +29,8 @@
             <DatePicker Name="FechaDatePicker" Height="20" SelectedDate="{Binding Fecha}" Padding="-1" Width="270" HorizontalAlignment="Left" Margin="5,0"/>
 
             <!--Juego Id-->
-            <Label Content="Juego Id" FontSize="11"/>
-            <TextBox Name="JuegoIdTextBox" Height="20" Width="270" Text="{Binding JuegoId}" HorizontalAlignment="Left" Margin="5,0"/>
+            <Label Content="Juego" FontSize="11"/>
+            <ComboBox Name="JuegoComboBox" Height="20" Width="270" SelectedValue="{Binding JuegoId}" HorizontalAlignment="Left" Margin="5,0"/>
 
             <!--Cantidad-->
             <Label Content="Cantidad" FontSize="11"/>

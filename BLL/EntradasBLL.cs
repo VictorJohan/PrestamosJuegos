@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Windows;
 
 namespace PrestamosJuegos.BLL
 {
@@ -20,8 +21,10 @@ namespace PrestamosJuegos.BLL
             }
             else
             {
-                ModificaInventario(entrada);
-                return Modificar(entrada);
+                if (ModificaInventario(entrada))
+                    return Modificar(entrada);
+                else
+                    return false;
             }
         }
 
@@ -193,7 +196,7 @@ namespace PrestamosJuegos.BLL
             JuegosBLL.Guardar(juego);
         }
 
-        public static void ModificaInventario(Entradas NuevaEntrada)
+        public static bool ModificaInventario(Entradas NuevaEntrada)
         {
             Entradas entrada = Buscar(NuevaEntrada.EntradaId);//Se buscala entrada anterior
             Juegos juego = JuegosBLL.Buscar(NuevaEntrada.JuegoId);//Se busca el juego a modificar
@@ -201,7 +204,18 @@ namespace PrestamosJuegos.BLL
             juego.Existencia -= entrada.Cantidad;//Se le resta la cantidad de la entrada anterior.
             juego.Existencia += NuevaEntrada.Cantidad;//Se le suma la nueva cantidad.
 
+            //Se puede dar el caso de que se preste una una cantidad X de juegos y se quiera modificar 
+            //la entrada por una cantidad menor a la que se presto y el inventario quede en - 
+            if (juego.Existencia < 0)
+            {
+                MessageBox.Show("No puedes realizar este cambio porque al parecer prestaste una cantidad mayor de la que ahora quieres " +
+                    "ingresar.",
+                    "Ha ocurrido un conflicto.", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
             JuegosBLL.Guardar(juego);
+            return true;
         }
     }
 }
