@@ -1,0 +1,56 @@
+﻿<Window x:Class="PrestamosJuegos.UI.Consultas.cAmigo.cAmigo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PrestamosJuegos.UI.Consultas.cAmigo"
+        mc:Ignorable="d"
+        Title="Consulta Amigos" Height="410" Width="850" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" Icon="/Resources/search.png">
+        
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="10,5,10,0">
+
+            <!--Panel Labels-->
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Filtro" FontSize="11"/>
+                <Label Content="Desde" FontSize="11" Margin="179,0,0,0"/>
+                <Label Content="Hasta" FontSize="11" Margin="110,0,0,0"/>
+
+                <Label Content="Criterio" FontSize="11" Margin="124,0,0,0"/>
+            </StackPanel>
+
+            <!--Panel Controles-->
+            <StackPanel Orientation="Horizontal">
+                <ComboBox Name="FiltroComBox" Height="20" Width="200" HorizontalAlignment="Left" Margin="5,0" Padding="-1"/>
+                <DatePicker Name="DesdeDatePicker" Height="20" Padding="-1" Margin="10,0,0,0"/>
+                <DatePicker Name="HastaDatePicker" Height="20" Padding="-1" Margin="10,0,10,0"/>
+                <TextBox Name="CriterioTexBox"  Width="200" Height="20" Margin="10,0,0,0"/>
+                
+                <Button Name="Buscar" Height="20" Width="60"  Click="Buscar_Click" Margin="10,0,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/search.png"/>
+                        <Label Content="Buscar" Margin="4,0" Padding="-1"/>
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+
+
+            <DataGrid Name="ConsultaDataGrid" Width="796" Height="300" AutoGenerateColumns="False" BorderBrush="Black" AlternatingRowBackground="#FFBAE3FF" HorizontalAlignment="Left"
+                              ItemsSource="{Binding Amigos}" Margin="5,5,0,0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" IsReadOnly="True" Binding="{Binding AmigoId}"/>
+                    <DataGridTextColumn Header="Nombres" IsReadOnly="True" Binding="{Binding Nombres}"/>
+                    <DataGridTextColumn Header="Dirección" IsReadOnly="True" Binding="{Binding Direccion}"/>
+                    <DataGridTextColumn Header="Teléfono" IsReadOnly="True" Binding="{Binding Telefono}"/>
+                    <DataGridTextColumn Header="Celular" IsReadOnly="True" Binding="{Binding Celular}"/>
+                    <DataGridTextColumn Header="Email" IsReadOnly="True" Binding="{Binding Email}"/>
+                    <DataGridTextColumn Header="Email" IsReadOnly="True" Binding="{Binding FechaNacimiento, StringFormat=dd/MM/yyy}"/>
+                    
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </StackPanel>
+    </Grid>
+
+</Window>
