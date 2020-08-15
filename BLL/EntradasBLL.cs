@@ -77,13 +77,13 @@ namespace PrestamosJuegos.BLL
         private static bool Modificar(Entradas entrada)
         {
             Contexto contexto = new Contexto();
+            Contexto contexto2 = new Contexto();
             bool ok = false;
-            var aux = Buscar(entrada.EntradaId);
+            var aux = contexto2.Entradas.Find(entrada.EntradaId);
 
             try
             {
-                entrada.Juego.Existencia -= aux.Cantidad;
-                entrada.Juego.Existencia += entrada.Cantidad;
+                entrada.Juego.Existencia = (entrada.Juego.Existencia - aux.Cantidad) + entrada.Cantidad;
                 contexto.Entry(entrada.Juego).State = EntityState.Modified;
                 contexto.Entry(entrada).State = EntityState.Modified;
                 ok = contexto.SaveChanges() > 0;
@@ -96,6 +96,7 @@ namespace PrestamosJuegos.BLL
             finally
             {
                 contexto.Dispose();
+                contexto2.Dispose();
             }
 
             return ok;
@@ -194,6 +195,5 @@ namespace PrestamosJuegos.BLL
             return lista;
         }
 
-        
     }
 }

@@ -149,9 +149,10 @@ namespace PrestamosJuegos.UI.Registros.rEntrada
 
             //Valida que el inventario no quede en negativo por una modificacion de una entrada.
             var juego = JuegosBLL.Buscar(int.Parse(JuegoComboBox.SelectedValue.ToString()));
-            if(juego.Existencia != 0)
+            var entrada = EntradasBLL.Buscar(int.Parse(EntradaIdTextBox.Text));
+            if(juego.Existencia != 0 && entrada.Cantidad > int.Parse(CantidadTextBox.Text))
             {
-                if ((juego.Existencia - int.Parse(CantidadTextBox.Text)) < 0)
+                if ((juego.Existencia + int.Parse(CantidadTextBox.Text) - entrada.Cantidad) < 0)
                 {
                     MessageBox.Show("No puedes realizar este cambio porque al parecer prestaste una cantidad mayor de la que ahora quieres " +
                         "ingresar.",
